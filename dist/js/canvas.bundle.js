@@ -81,67 +81,48 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/canvas.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/game.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/canvas.js":
-/*!***********************!*\
-  !*** ./src/canvas.js ***!
-  \***********************/
+/***/ "./src/game.js":
+/*!*********************!*\
+  !*** ./src/game.js ***!
+  \*********************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _utils = __webpack_require__(/*! ./utils */ "./src/utils.js");
+var c = document.querySelector('canvas');
+var canvas = c.getContext('2d');
 
-var _utils2 = _interopRequireDefault(_utils);
+c.width = innerWidth;
+c.height = innerHeight;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var inputX = document.getElementById('inputX');
+var ipnutY = document.getElementById('inputY');
+var inputWidth = document.getElementById('inputWidth');
+var inputHeight = document.getElementById('inputHeight');
+var submit = document.getElementById('submit');
+var form = document.getElementById('form');
 
-var canvas = document.querySelector('canvas');
-var c = canvas.getContext('2d');
-
-canvas.width = innerWidth;
-canvas.height = innerHeight;
-
-var mouse = {
-    x: innerWidth / 2,
-    y: innerHeight / 2
-
-    // Event Listeners
-};addEventListener('mousemove', function (event) {
-    mouse.x = event.clientX;
-    mouse.y = event.clientY;
-    drawMouse();
+submit.addEventListener('click', function () {
+  canvas.clearRect(0, 0, canvas.width, canvas.height);
+  canvas.beginPath();
+  canvas.rect(inputX.value, inputY.value, inputWidth.value, inputHeight.value);
+  canvas.stroke();
 });
 
-addEventListener('resize', function () {
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
-
-    init();
-});
-
-// Animation Loop
-function drawMouse() {
-    c.clearRect(0, 0, canvas.width, canvas.height);
-    c.fillText('HTML CANVAS BOILERPLATE', mouse.x, mouse.y);
-}
-
-/***/ }),
-
-/***/ "./src/utils.js":
-/*!**********************!*\
-  !*** ./src/utils.js ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/gezimhaziri/workspace/canvas-boilerplate/src/utils.js'");
+form.onsubmit = function (e) {
+  e.preventDefault();
+  canvas.clearRect(0, 0, c.width, c.height);
+  canvas.beginPath();
+  canvas.rect(inputX.value, inputY.value, inputWidth.value, inputHeight.value);
+  canvas.stroke();
+};
 
 /***/ })
 

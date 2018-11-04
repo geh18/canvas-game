@@ -1,5 +1,3 @@
-import utils from './utils'
-
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
@@ -11,11 +9,18 @@ const mouse = {
     y: innerHeight / 2
 }
 
+let drawSquare = function() {
+  c.beginPath()
+  c.rect(100, 100, 200, 200)
+  c.stroke()
+}
+
 // Event Listeners
 addEventListener('mousemove', event => {
     mouse.x = event.clientX
     mouse.y = event.clientY
     drawMouse()
+    drawSquare()
 })
 
 addEventListener('resize', () => {
