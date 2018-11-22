@@ -81,48 +81,113 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/game.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/game.ts");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/game.js":
+/***/ "./src/canvas.ts":
+/*!***********************!*\
+  !*** ./src/canvas.ts ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+exports.__esModule = true;
+var Canvas = (function () {
+    function Canvas() {
+        this.canvasElm = document.querySelector('canvas');
+        this.canvas = this.canvasElm.getContext('2d');
+        this.canvasElm.width = innerWidth;
+        this.canvasElm.height = innerHeight;
+    }
+    Canvas.prototype.clearCanvas = function () {
+        this.canvas.clearRect(0, 0, this.canvasElm.width, this.canvasElm.height);
+    };
+    return Canvas;
+}());
+exports["default"] = Canvas;
+
+
+/***/ }),
+
+/***/ "./src/game.ts":
 /*!*********************!*\
-  !*** ./src/game.js ***!
+  !*** ./src/game.ts ***!
   \*********************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-
-var c = document.querySelector('canvas');
-var canvas = c.getContext('2d');
-
-c.width = innerWidth;
-c.height = innerHeight;
-
-var inputX = document.getElementById('inputX');
-var ipnutY = document.getElementById('inputY');
-var inputWidth = document.getElementById('inputWidth');
-var inputHeight = document.getElementById('inputHeight');
-var submit = document.getElementById('submit');
-var form = document.getElementById('form');
-
-submit.addEventListener('click', function () {
-  canvas.clearRect(0, 0, canvas.width, canvas.height);
-  canvas.beginPath();
-  canvas.rect(inputX.value, inputY.value, inputWidth.value, inputHeight.value);
-  canvas.stroke();
-});
-
-form.onsubmit = function (e) {
-  e.preventDefault();
-  canvas.clearRect(0, 0, c.width, c.height);
-  canvas.beginPath();
-  canvas.rect(inputX.value, inputY.value, inputWidth.value, inputHeight.value);
-  canvas.stroke();
+exports.__esModule = true;
+var pad_ts_1 = __webpack_require__(/*! ./pad.ts */ "./src/pad.ts");
+var X = 100;
+var Y = 525;
+var width = 200;
+var height = 10;
+var board = new pad_ts_1["default"]();
+document.onkeydown = function (e) {
+    var speed = 100;
+    if (e.keyCode == 39) {
+        X = X + speed;
+        board.drawRectangle(X, Y, width, height);
+    }
+    if (e.keyCode == 37) {
+        X = X - speed;
+        board.drawRectangle(X, Y, width, height);
+    }
 };
+var initGame = function () {
+    board.drawRectangle(X, Y, width, height);
+};
+initGame();
+
+
+/***/ }),
+
+/***/ "./src/pad.ts":
+/*!********************!*\
+  !*** ./src/pad.ts ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+exports.__esModule = true;
+var canvas_ts_1 = __webpack_require__(/*! ./canvas.ts */ "./src/canvas.ts");
+var Board = (function (_super) {
+    __extends(Board, _super);
+    function Board() {
+        var _this = _super.call(this) || this;
+        _this.drawRectangle = function (x, y, width, height) {
+            _super.prototype.clearCanvas.call(_this);
+            _this.canvas.beginPath();
+            _this.canvas.rect(x, y, width, height);
+            _this.canvas.fill();
+        };
+        return _this;
+    }
+    return Board;
+}(canvas_ts_1["default"]));
+exports["default"] = Board;
+
 
 /***/ })
 
