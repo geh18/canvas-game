@@ -8,6 +8,9 @@ module.exports = {
         path: __dirname + '/dist/',
         filename: './js/canvas.bundle.js'
     },
+    resolve: {
+    extensions: [".ts"]
+  },
     module: {
         rules: [
             { test: /\.ts$/, loader: 'ts-loader' }

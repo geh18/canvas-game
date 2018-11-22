@@ -1,16 +1,43 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "module": "commonjs",
     "outDir": "dist/",
-    "noImplicitAny": true,
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "isolatedModules": false,
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "noImplicitAny": false,
     "removeComments": true,
-    "preserveConstEnums": true
+    "noLib": false,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowUnreachableCode": false
   },
   "include": [
-    "src/*",
+    "src/*"
   ],
+  "atom": {
+    "rewriteTsconfig": false,
+    "formatOnSave": true
+  },
   "exclude": [
       "node_modules",
       "**/*.spec.ts"
-  ]
+  ],
+  "formatCodeOptions": {
+    "indentSize": 2,
+    "tabSize": 2,
+    "insertSpaceAfterCommaDelimiter": true,
+    "insertSpaceAfterSemicolonInForStatements": true,
+    "insertSpaceBeforeAndAfterBinaryOperators": true,
+    "insertSpaceAfterKeywordsInControlFlowStatements": true,
+    "insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+    "placeOpenBraceOnNewLineForFunctions": false,
+    "placeOpenBraceOnNewLineForControlBlocks": false
+  }
 }

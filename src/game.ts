@@ -1,11 +1,11 @@
-import Pad from './pad.ts'
+import Board from './Board'
 
 var X: number = 100
 var Y: number = 525
 var width: number = 200
 var height: number = 10
 
-const board = new Pad();
+const board = new Board();
 
 
 document.onkeydown = function(e) {
@@ -25,5 +25,6 @@ document.onkeydown = function(e) {
 const initGame: any = () => {
   board.drawRectangle(X, Y, width, height)
 }
+
 
 initGame()

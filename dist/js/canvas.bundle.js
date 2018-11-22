@@ -86,72 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/canvas.ts":
-/*!***********************!*\
-  !*** ./src/canvas.ts ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-exports.__esModule = true;
-var Canvas = (function () {
-    function Canvas() {
-        this.canvasElm = document.querySelector('canvas');
-        this.canvas = this.canvasElm.getContext('2d');
-        this.canvasElm.width = innerWidth;
-        this.canvasElm.height = innerHeight;
-    }
-    Canvas.prototype.clearCanvas = function () {
-        this.canvas.clearRect(0, 0, this.canvasElm.width, this.canvasElm.height);
-    };
-    return Canvas;
-}());
-exports["default"] = Canvas;
-
-
-/***/ }),
-
-/***/ "./src/game.ts":
-/*!*********************!*\
-  !*** ./src/game.ts ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-exports.__esModule = true;
-var pad_ts_1 = __webpack_require__(/*! ./pad.ts */ "./src/pad.ts");
-var X = 100;
-var Y = 525;
-var width = 200;
-var height = 10;
-var board = new pad_ts_1["default"]();
-document.onkeydown = function (e) {
-    var speed = 100;
-    if (e.keyCode == 39) {
-        X = X + speed;
-        board.drawRectangle(X, Y, width, height);
-    }
-    if (e.keyCode == 37) {
-        X = X - speed;
-        board.drawRectangle(X, Y, width, height);
-    }
-};
-var initGame = function () {
-    board.drawRectangle(X, Y, width, height);
-};
-initGame();
-
-
-/***/ }),
-
-/***/ "./src/pad.ts":
-/*!********************!*\
-  !*** ./src/pad.ts ***!
-  \********************/
+/***/ "./src/Board.ts":
+/*!**********************!*\
+  !*** ./src/Board.ts ***!
+  \**********************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -170,11 +108,11 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-exports.__esModule = true;
-var canvas_ts_1 = __webpack_require__(/*! ./canvas.ts */ "./src/canvas.ts");
-var Board = (function (_super) {
-    __extends(Board, _super);
-    function Board() {
+Object.defineProperty(exports, "__esModule", { value: true });
+var canvas_1 = __webpack_require__(/*! ./canvas */ "./src/canvas.ts");
+var Board2 = (function (_super) {
+    __extends(Board2, _super);
+    function Board2() {
         var _this = _super.call(this) || this;
         _this.drawRectangle = function (x, y, width, height) {
             _super.prototype.clearCanvas.call(_this);
@@ -184,9 +122,71 @@ var Board = (function (_super) {
         };
         return _this;
     }
-    return Board;
-}(canvas_ts_1["default"]));
-exports["default"] = Board;
+    return Board2;
+}(canvas_1.default));
+exports.default = Board2;
+
+
+/***/ }),
+
+/***/ "./src/canvas.ts":
+/*!***********************!*\
+  !*** ./src/canvas.ts ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Canvas = (function () {
+    function Canvas() {
+        this.canvasElm = document.querySelector('canvas');
+        this.canvas = this.canvasElm.getContext('2d');
+        this.canvasElm.width = innerWidth;
+        this.canvasElm.height = innerHeight;
+    }
+    Canvas.prototype.clearCanvas = function () {
+        this.canvas.clearRect(0, 0, this.canvasElm.width, this.canvasElm.height);
+    };
+    return Canvas;
+}());
+exports.default = Canvas;
+
+
+/***/ }),
+
+/***/ "./src/game.ts":
+/*!*********************!*\
+  !*** ./src/game.ts ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Board_1 = __webpack_require__(/*! ./Board */ "./src/Board.ts");
+var X = 100;
+var Y = 525;
+var width = 200;
+var height = 10;
+var board = new Board_1.default();
+document.onkeydown = function (e) {
+    var speed = 100;
+    if (e.keyCode == 39) {
+        X = X + speed;
+        board.drawRectangle(X, Y, width, height);
+    }
+    if (e.keyCode == 37) {
+        X = X - speed;
+        board.drawRectangle(X, Y, width, height);
+    }
+};
+var initGame = function () {
+    board.drawRectangle(X, Y, width, height);
+};
+initGame();
 
 
 /***/ })

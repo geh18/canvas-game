@@ -1,10 +1,10 @@
-import Canvas from './canvas.ts';
+import Canvas from './canvas';
 
 interface RectangleI {
   (x: number, y: number, width: number, height: number): void;
 }
 
-class Board extends Canvas {
+class Board2 extends Canvas {
   constructor() {
     super();
   }
@@ -18,4 +18,4 @@ class Board extends Canvas {
 }
 
 
-export default Board;
+export default Board2;

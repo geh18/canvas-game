@@ -1,7 +1,7 @@
 
 class Canvas {
-  public canvasElm: any;
-  public canvas: any;
+  public canvasElm: HTMLCanvasElement;
+  public canvas: CanvasRenderingContext2D;
 
   constructor() {
     this.canvasElm = document.querySelector('canvas')
